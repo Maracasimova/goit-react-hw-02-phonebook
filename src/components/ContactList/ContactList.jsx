@@ -1,18 +1,18 @@
+import { ContactUser } from 'components/ContactUser/ContactUser';
 import style from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
 export const ContactList = ({ contactSeach, deleteContact }) => {
- if (contactSeach.length === 0) {
-   return <p className={style.message}>No contacts found.</p>;
- }
+  if (contactSeach.length === 0) {
+    return <p className={style.message}>No contacts found.</p>;
+  }
 
   return (
     <ul className={style.list}>
       {contactSeach.map(({ name, number, id }) => {
         return (
           <li className={style.user} key={id}>
-            <p>Name: {name}</p>
-            <p>Number: {number}</p>
+            <ContactUser name={name} number={number} />
             <button
               className={style.btn}
               onClick={() => {
