@@ -18,10 +18,10 @@ export class App extends Component {
 
   addContact = userData => {
     let existingUser = this.state.contacts.some(
-      user => user.name === userData.name
+      user => user.name.toLocaleLowerCase() === userData.name.toLocaleLowerCase()
     );
     if (existingUser) {
-      alert(`${existingUser.name} is already in contacts`);
+      alert(`${userData.name} is already in contacts`);
     } else {
       const newUser = { ...userData, id: nanoid() };
       this.setState(prevstate => {
@@ -64,7 +64,7 @@ export class App extends Component {
         <ContactForm addContact={this.addContact} />
 
         <h2 className={style.text}>Contacts</h2>
-        
+
         <Filter handleChangeFilter={this.handleChangeFilter} filter={filter} />
         <ContactList
           contactSeach={contactSeach}
