@@ -16,23 +16,14 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = userData => {
-    let existingUser = this.state.contacts.some(
-      user => user.name.toLocaleLowerCase() === userData.name.toLocaleLowerCase()
-    );
-    if (existingUser) {
-      alert(`${userData.name} is already in contacts`);
-    } else {
-      const newUser = { ...userData, id: nanoid() };
-      this.setState(prevstate => {
-        return {
-          contacts: [...prevstate.contacts, newUser],
-          name: '',
-          number: '',
-        };
-      });
-    }
-  };
+  addContact = (userData) => {
+    const newUser = { ...userData, id: nanoid() };
+    this.setState(
+      (prevstate) => {
+        return { contacts: [...prevstate.contacts, newUser] }
+      }
+    )
+};
 
   deleteContact = id => {
     this.setState(prevstate => {
@@ -57,11 +48,12 @@ export class App extends Component {
     const contactSeach = contacts.filter(user =>
       this.filterContact(user.name, filter)
     );
+    const contactName = contacts.map(user => user.name);
 
     return (
       <div className={style.book}>
         <h1 className={style.text}>Phonebook</h1>
-        <ContactForm addContact={this.addContact} />
+        <ContactForm addContact={this.addContact} contactName={contactName}/>
 
         <h2 className={style.text}>Contacts</h2>
 

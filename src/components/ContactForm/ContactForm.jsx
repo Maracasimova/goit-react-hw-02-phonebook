@@ -14,16 +14,22 @@ export default class ContactForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    if (this.props.addContact) {
-      this.props.addContact({ ...this.state });
+    let userEx = this.props.contactName.includes(this.state.name);
+    if (userEx) {
+        alert(`${userEx.name} is already in contacts`)
+        this.setState({
+            name: ""
+        })
+    } else {
+        this.props.addContact({ ...this.state });
+        this.setState({
+            name: "",
+            number: ""
+        })
     }
-    this.setState({
-      name: '',
-      number: '',
-    });
-  };
+};
 
   render() {
     const { name, number } = this.state;
@@ -64,4 +70,5 @@ export default class ContactForm extends Component {
 
 ContactForm.propTypes = {
   addContact: PropTypes.func.isRequired,
+  contactName: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
