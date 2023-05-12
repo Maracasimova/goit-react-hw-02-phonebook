@@ -10,7 +10,13 @@ export const ContactList = ({ contactSeach, deleteContact }) => {
     <ul>
       {contactSeach.map(({ name, number, id }) => {
         return (
-          < ContactUser id={id} key={id} name={name} number={number} deleteContact={deleteContact}/>
+          <ContactUser
+            id={id}
+            key={id}
+            name={name}
+            number={number}
+            deleteContact={deleteContact}
+          />
         );
       })}
     </ul>
@@ -21,5 +27,5 @@ ContactList.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  deleteContact: PropTypes.func.isRequired
+  deleteContact: PropTypes.func.isRequired,
 };

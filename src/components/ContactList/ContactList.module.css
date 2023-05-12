@@ -16,10 +16,10 @@
 
 .message {
   background-color: #d6d2c7;
-   align-items: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   color: #5c5b43;
   margin: 0;
-  font-size: 25px
+  font-size: 25px;
 }

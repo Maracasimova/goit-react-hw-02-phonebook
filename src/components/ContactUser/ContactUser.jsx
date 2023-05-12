@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 export const ContactUser = ({ id, name, number, deleteContact }) => {
   return (
-<li key={id}>
+    <li key={id}>
       {name} : {number}
-      <button className={style.btn} type="button" onClick={() => deleteContact(id)}>
+      <button
+        className={style.btn}
+        type="button"
+        onClick={() => deleteContact(id)}
+      >
         Delete
       </button>
     </li>
