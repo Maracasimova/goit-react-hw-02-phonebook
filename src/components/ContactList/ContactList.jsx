@@ -23,9 +23,14 @@ export const ContactList = ({ contactSeach, deleteContact }) => {
   );
 };
 
+
 ContactList.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  contactSeach: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   deleteContact: PropTypes.func.isRequired,
 };
