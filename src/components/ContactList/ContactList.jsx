@@ -23,7 +23,6 @@ export const ContactList = ({ contactSeach, deleteContact }) => {
   );
 };
 
-
 ContactList.propTypes = {
   contactSeach: PropTypes.arrayOf(
     PropTypes.shape({
