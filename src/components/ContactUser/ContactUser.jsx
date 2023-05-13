@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const ContactUser = ({ id, name, number, deleteContact }) => {
   return (
-    <li key={id}>
+    <li>
       {name} : {number}
       <button
         className={style.btn}
