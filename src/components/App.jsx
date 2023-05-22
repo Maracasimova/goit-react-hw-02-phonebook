@@ -17,6 +17,15 @@ export class App extends Component {
   };
 
   addContact = userData => {
+    const existingContact = this.state.contacts.find(
+      contact => contact.name === userData.name
+    );
+
+    if (existingContact) {
+      alert('This contact already exists.');
+      return;
+    }
+    
     const newUser = { ...userData, id: nanoid() };
     this.setState(prevstate => {
       return { contacts: [...prevstate.contacts, newUser] };
