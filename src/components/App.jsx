@@ -25,7 +25,7 @@ export class App extends Component {
       alert('This contact already exists.');
       return;
     }
-    
+
     const newUser = { ...userData, id: nanoid() };
     this.setState(prevstate => {
       return { contacts: [...prevstate.contacts, newUser] };
@@ -44,29 +44,25 @@ export class App extends Component {
     });
   };
 
-  filterContact = (name, filter) => {
-    let nameLow = name.toLocaleLowerCase();
-    let filterLow = filter.toLocaleLowerCase();
-    return nameLow.indexOf(filterLow) >= 0;
+  filterContact = () => {
+    const { contacts, filter } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
 
   render() {
-    const { contacts, filter } = this.state;
-    const contactSeach = contacts.filter(user =>
-      this.filterContact(user.name, filter)
-    );
-    const contactName = contacts.map(user => user.name);
-
+    const { filter } = this.state;
     return (
       <div className={style.book}>
         <h1 className={style.text}>Phonebook</h1>
-        <ContactForm addContact={this.addContact} contactName={contactName} />
+        <ContactForm addContact={this.addContact} />
 
         <h2 className={style.text}>Contacts</h2>
 
         <Filter handleChangeFilter={this.handleChangeFilter} filter={filter} />
         <ContactList
-          contactSeach={contactSeach}
+          contactSearch={this.filterContact}
           deleteContact={this.deleteContact}
         />
       </div>
