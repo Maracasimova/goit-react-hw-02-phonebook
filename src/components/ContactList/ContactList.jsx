@@ -1,14 +1,14 @@
 import { ContactUser } from 'components/ContactUser/ContactUser';
 import PropTypes from 'prop-types';
 
-export const ContactList = ({ contactSeach, deleteContact }) => {
-  if (contactSeach.length === 0) {
+export const ContactList = ({ contactSearch, deleteContact }) => {
+  if (contactSearch.length === 0) {
     return <p>No contacts found.</p>;
   }
 
   return (
     <ul>
-      {contactSeach.map(({ name, number, id }) => {
+      {contactSearch.map(({ name, number, id }) => {
         return (
           <ContactUser
             id={id}
@@ -24,7 +24,7 @@ export const ContactList = ({ contactSeach, deleteContact }) => {
 };
 
 ContactList.propTypes = {
-  contactSeach: PropTypes.arrayOf(
+  contactSearch: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
