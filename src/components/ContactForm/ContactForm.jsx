@@ -16,19 +16,7 @@ export default class ContactForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let userEx = this.props.contactName.includes(this.state.name);
-    if (userEx) {
-      alert(`${this.state.name} is already in contacts`);
-      this.setState({
-        name: '',
-      });
-    } else {
-      this.props.addContact({ ...this.state });
-      this.setState({
-        name: '',
-        number: '',
-      });
-    }
+    this.props.addContact({ ...this.state });
   };
 
   render() {
