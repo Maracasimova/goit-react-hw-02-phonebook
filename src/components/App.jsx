@@ -62,7 +62,7 @@ export class App extends Component {
 
         <Filter handleChangeFilter={this.handleChangeFilter} filter={filter} />
         <ContactList
-          contactSearch={this.filterContact}
+          contactSearch={this.filterContact()}
           deleteContact={this.deleteContact}
         />
       </div>
