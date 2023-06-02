@@ -22,7 +22,7 @@ export class App extends Component {
     );
 
     if (existingContact) {
-      alert('This contact already exists.');
+      alert(`This contact ${existingContact.name} already exists.`);
       return;
     }
 
@@ -53,6 +53,8 @@ export class App extends Component {
 
   render() {
     const { filter } = this.state;
+    const filteredContacts = this.filterContact();
+    
     return (
       <div className={style.book}>
         <h1 className={style.text}>Phonebook</h1>
@@ -60,11 +62,20 @@ export class App extends Component {
 
         <h2 className={style.text}>Contacts</h2>
 
-        <Filter handleChangeFilter={this.handleChangeFilter} filter={filter} />
-        <ContactList
-          contactSearch={this.filterContact()}
-          deleteContact={this.deleteContact}
-        />
+        {filteredContacts.length === 0 ? (
+          <p>No contacts found.</p>
+        ) : (
+          <>
+            <Filter
+              handleChangeFilter={this.handleChangeFilter}
+              filter={filter}
+            />
+            <ContactList
+              contactSearch={filteredContacts}
+              deleteContact={this.deleteContact}
+            />
+          </>
+        )}
       </div>
     );
   }
